@@ -2,6 +2,8 @@ const cardSection = document.getElementById('main');
 const modal = document.getElementById('modal');
 let employees = [];
 let searchResult = [];
+let cardsList = [];
+
 const checkStatus = response => {
     if (response.ok) {
         return Promise.resolve(response);
@@ -33,6 +35,9 @@ const profiles = (data) => {
         </div>
         `
         cardSection.innerHTML += html;
+
+
+        cardsList = document.querySelectorAll('.card')
     })
 }
 
@@ -170,18 +175,20 @@ cardSection.addEventListener('click', (e) => {
 // Search ----------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-const cardsList = document.querySelectorAll('.card')
+
+
 const searchBar = document.getElementById('search');
 // Stworzyc nowa tablice z wartosciami pasujacymi do search i na ich podstawie stworzyc nowy html
 
 const search = (e) => {
     const searchValue = e.target.value.toLowerCase();
     let cards = [...cardsList];
-    cards = cards.filter(card => card.outerText.toLowerCase().includes(searchValue));
+    cards = cards.filter(card => card.textContent.toLowerCase().includes(searchValue));
     console.log(cards);
     cardSection.innerHTML = '';
     cards.forEach(card => {
-        cardSection.innerHTML = card
+        console.log(card.innerHTML)
+        cardSection.innerHTML += card.outerHTML
     });
 }
 
