@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: rgb(248, 248, 248);
+}
+
+.wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  margin: 20px 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgb(90, 90, 90);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 325px));
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  margin: 5px;
+  align-items: center;
+  border: 1.5px solid lightgrey;
+  border-radius: 7px;
+  background-color: #fff;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+img {
+  margin: 20px;
+  height: 90px;
+  border-radius: 50%;
+
+}
+
+h2 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  color: rgb(90, 90, 90);
+}
+
+p {
+  font-size: 0.7em;
+  margin: 3px 0;
+  color: #999999;
+}
+
+@media (min-width: 1024px) {
+  .header h1 {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .description h2 {
+    font-size: 1.3;
+  }
+
+  .description p {
+    font-size: 0.8em;
+  }
+}
+
+
+
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .6);
+  transition: 0.2s;
+}
+
+.modalCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 325px;
+  align-items: center;
+  background-color: #fff;
+  border: 1.5px solid lightgrey;
+  border-radius: 7px;
+
+}
+
+.modal-On {
+  display: flex;
+  animation: opacity 0.2s linear both;
+}
+
+.modal-Off {
+  animation: opacity 0.2s linear both reverse;
+}
+
+.modalTop,
+.modalBottom {
+  width: 80%;
+  text-align: center;
+}
+
+.modalTop {
+  margin-top: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.modalBottom {
+  margin-bottom: 40px;
+  padding-top: 20px;
+}
+
+.modalCard p {
+  margin: 8px 0;
+}
+
+.modalCard img {
+  height: 100%;
+  margin: 5px 0;
+}
+
+.modal-On .closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+.closeBtn img {
+  height: 100%;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.closeBtn:hover img {
+  transform: scale(1.1);
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
