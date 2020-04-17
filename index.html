@@ -15,6 +15,7 @@
 
         <header class="header">
             <h1>Awesome startup employee directory</h1>
+            <input type="text" id="search" placeholder="Search...">
         </header>
         <main class="main" id="main">
         </main>
@@ -23,6 +24,20 @@
     <div class="modal" id="modal">
 
         <div class="modalCard" id="modalCard">
+            <div class="closeBtn"><img src="images/iconfinder_icon-close_211652.svg" alt="close button"></div>
+            <div class="leftBtn"><img src="images/iconfinder_icon-ios7-arrow-back_211686.svg" alt=""></div>
+            <div class="rightBtn"><img src="images/iconfinder_icon-ios7-arrow-forward_211688.svg" alt=""></div>
+            <div class="modalTop">
+                <img id="avatar" src="" alt="">
+                <h2 id="name"></h2>
+                <p id="email"></p>
+                <p id="city"></p>
+            </div>
+            <div class="modalBottom">
+                <p id="phone"></p>
+                <p id="location"></p>
+                <p id="birthday"></p>
+            </div>
         </div>
     </div>
     <script src="js/app.js"></script>

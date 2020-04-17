@@ -25,7 +25,7 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 325px));
+  grid-template-columns: repeat(auto-fit, minmax(auto, 310px));
   grid-gap: 10px;
   justify-content: center;
 }
@@ -59,25 +59,12 @@ h2 {
 }
 
 p {
-  font-size: 0.7em;
+  font-size: .65rem;
   margin: 3px 0;
   color: #999999;
 }
 
-@media (min-width: 1024px) {
-  .header h1 {
-    font-size: 1.2rem;
-    text-align: left;
-  }
 
-  .description h2 {
-    font-size: 1.3;
-  }
-
-  .description p {
-    font-size: 0.8em;
-  }
-}
 
 
 
@@ -94,20 +81,22 @@ p {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, .6);
-  transition: 0.2s;
+  transition: 0.4s;
 }
 
 .modalCard {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 325px;
+  width: 300px;
   align-items: center;
   background-color: #fff;
   border: 1.5px solid lightgrey;
   border-radius: 7px;
 
 }
+
+
 
 .modal-On {
   display: flex;
@@ -144,22 +133,41 @@ p {
   margin: 5px 0;
 }
 
+.modal-On .rightBtn,
+.modal-On .leftBtn,
 .modal-On .closeBtn {
   position: absolute;
-  top: 10px;
-  right: 10px;
   height: 20px;
-  width: 20px;
 }
 
-.closeBtn img {
+.modal-On .closeBtn {
+  top: 10px;
+  right: 10px;
+  height: 15px;
+}
+
+.modal-On .rightBtn {
+  top: 45%;
+  right: 10px;
+}
+
+.modal-On .leftBtn {
+  top: 45%;
+  left: 10px;
+}
+
+.closeBtn img,
+.rightBtn img,
+.leftBtn img {
   height: 100%;
   cursor: pointer;
   transition: .2s;
 }
 
-.closeBtn:hover img {
-  transform: scale(1.1);
+.closeBtn:hover img,
+.leftBtn:hover img,
+.rightBtn:hover img {
+  transform: scale(1.2);
 }
 
 @keyframes opacity {
@@ -169,5 +177,25 @@ p {
 
   100% {
     opacity: 1;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .header h1 {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .description h2 {
+    font-size: 1.3;
+  }
+
+  .description p {
+    font-size: 0.7em;
+  }
+
+  .modalCard {
+    width: 325px;
   }
 }

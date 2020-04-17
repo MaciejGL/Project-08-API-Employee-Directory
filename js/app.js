@@ -1,7 +1,7 @@
 const cardSection = document.getElementById('main');
 const modal = document.getElementById('modal');
-let employees = []
-
+let employees = [];
+let searchResult = [];
 const checkStatus = response => {
     if (response.ok) {
         return Promise.resolve(response);
@@ -36,7 +36,7 @@ const profiles = (data) => {
     })
 }
 
-fetchData('https://randomuser.me/api/1.3/?results=12')
+fetchData('https://randomuser.me/api/1.3/?results=12&nat=us')
     .then(data => profiles(data))
 
 
@@ -65,7 +65,7 @@ const createModal = (i) => {
 
     let date = new Date(dob.date)
     let day = date.getDate();
-    let month = date.getMonth();
+    let month = date.getMonth() + 1;
     let year = date.getYear();
     if (day < 10) {
         day = `0${day}`
@@ -74,32 +74,24 @@ const createModal = (i) => {
         month = `0${month}`
     }
 
-    // Create html to display ----------------------------------------------------------
+    // Create textContent to display ----------------------------------------------------------
 
-    let htmlModal = `
-    
-    <div class="closeBtn"><img src="images/iconfinder_icon-close_211652.svg" alt="close button"></div>
-    <div class="modalTop">
-    <img src="${picture.large}" alt="${name.first} ${name.last}">
-    <h2>${name.first} ${name.last}</h2>
-    <p>${email}</p>
-    <p>${city}</p>
-    </div>
-    <div class="modalBottom">
-    <p>${phone}</p>
-    <p>${street.number} ${street.name}, ${state} ${postcode}</p>
-    <p>Birthday: ${day}/${month}/${year}</p>
-    </div>`
+    document.getElementById('avatar').src = `${picture.large}`;
+    document.getElementById('avatar').alt = `${name.first} ${name.last}`;
+    document.getElementById('name').textContent = `${name.first} ${name.last}`;
+    document.getElementById('email').textContent = email;
+    document.getElementById('city').textContent = city;
+    document.getElementById('phone').textContent = phone;
+    document.getElementById('location').textContent = `${street.number} ${street.name}, ${state} ${postcode}`;
+    document.getElementById('birthday').textContent = `Birthday: ${day}/${month}/${year}`;
 
-    return htmlModal
 }
 
 // Function to display modal ----------------------------------------------------------
 
 const displayModal = (index) => {
-    let i = index
-    console.log(i)
-    document.getElementById('modalCard').innerHTML = createModal(i)
+    let i = index;
+    createModal(i);
 
     modal.classList.add('modal-On')
 
@@ -120,26 +112,39 @@ const displayModal = (index) => {
         if (e.key == "Escape") {
             closeModal();
         }
+
+        // Switch between array index
+
         if (e.key == "ArrowRight") {
-
             i++;
-
             if (i == 12) {
                 i = 0
             }
 
-            document.getElementById('modalCard').innerHTML = createModal(i)
+            createModal(i)
         } else if (e.key == "ArrowLeft") {
             if (i == 0) {
                 i = 12
             }
-
             i--;
-
-
-
-            document.getElementById('modalCard').innerHTML = createModal(i)
+            createModal(i)
         }
+    })
+
+    document.querySelector('.leftBtn').addEventListener('click', () => {
+        if (i == 0) {
+            i = 12
+        }
+        i--;
+        createModal(i)
+    })
+    document.querySelector('.rightBtn').addEventListener('click', () => {
+        i++;
+        if (i == 12) {
+            i = 0
+        }
+
+        createModal(i)
     })
 }
 
@@ -156,3 +161,28 @@ cardSection.addEventListener('click', (e) => {
     }
 
 )
+
+
+
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Search ----------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+const cardsList = document.querySelectorAll('.card')
+const searchBar = document.getElementById('search');
+// Stworzyc nowa tablice z wartosciami pasujacymi do search i na ich podstawie stworzyc nowy html
+
+const search = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    let cards = [...cardsList];
+    cards = cards.filter(card => card.outerText.toLowerCase().includes(searchValue));
+    console.log(cards);
+    cardSection.innerHTML = '';
+    cards.forEach(card => {
+        cardSection.innerHTML = card
+    });
+}
+
+searchBar.addEventListener('input', search)
