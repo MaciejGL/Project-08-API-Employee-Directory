@@ -60,6 +60,7 @@ input:focus {
   border: 1.5px solid lightgrey;
   border-radius: 7px;
   background-color: #fff;
+  overflow: hidden;
   transition: 0.2s;
 }
 
@@ -73,6 +74,10 @@ img {
   height: 90px;
   border-radius: 50%;
 
+}
+
+.description {
+  width: 100%;
 }
 
 h2 {
@@ -205,6 +210,10 @@ p {
 
 
 @media (min-width: 1024px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(auto, 340px));
+  }
+
   .header {
     flex-direction: row;
   }
