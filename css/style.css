@@ -14,6 +14,14 @@ body {
   margin: 0 auto;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* margin-bottom: 20px; */
+}
+
 .header h1 {
   margin: 20px 10px;
   text-transform: uppercase;
@@ -22,6 +30,21 @@ body {
   font-size: 1.2rem;
   text-align: center;
 }
+
+input {
+  margin: 0 0 20px 0;
+  padding: 7px 14px;
+  width: 80%;
+  max-width: 325px;
+  border: 1.5px solid cadetblue;
+  border-radius: 7px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px cadetblue;
+}
+
 
 .main {
   display: grid;
@@ -182,9 +205,17 @@ p {
 
 
 @media (min-width: 1024px) {
+  .header {
+    flex-direction: row;
+  }
+
   .header h1 {
     font-size: 1.2rem;
     text-align: left;
+  }
+
+  input {
+    margin: 20px 0;
   }
 
   .description h2 {

@@ -4,6 +4,14 @@ let employees = [];
 let searchResult = [];
 let cardsList = [];
 
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// API  ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+// Check status/Promise
+
 const checkStatus = response => {
     if (response.ok) {
         return Promise.resolve(response);
@@ -12,11 +20,15 @@ const checkStatus = response => {
     }
 }
 
+// Get Data
+
 const fetchData = (url) => {
     return fetch(url)
         .then(checkStatus)
         .then(res => res.json())
 }
+
+// Create card html with provided data from fetchData + make a list of cards
 
 const profiles = (data) => {
     const profiles = data.results
@@ -45,7 +57,12 @@ fetchData('https://randomuser.me/api/1.3/?results=12&nat=us')
     .then(data => profiles(data))
 
 
-// MODAL SECTION  ----------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// MODAL SECTION  --------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
 
 
 const createModal = (i) => {
@@ -168,8 +185,6 @@ cardSection.addEventListener('click', (e) => {
 )
 
 
-
-
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Search ----------------------------------------------------------------------
@@ -178,7 +193,6 @@ cardSection.addEventListener('click', (e) => {
 
 
 const searchBar = document.getElementById('search');
-// Stworzyc nowa tablice z wartosciami pasujacymi do search i na ich podstawie stworzyc nowy html
 
 const search = (e) => {
     const searchValue = e.target.value.toLowerCase();
