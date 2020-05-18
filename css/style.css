@@ -157,7 +157,7 @@ p {
 }
 
 .modalCard img {
-  height: 100%;
+  height: auto;
   margin: 5px 0;
 }
 
